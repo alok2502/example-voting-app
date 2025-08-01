@@ -1,0 +1,44 @@
+version: "3"
+services:
+  vote:
+    image: alok123.azurecr.io/voterepo:latest
+    ports:
+      - "8080:80"
+    networks:
+      - front-tier
+      - back-tier
+
+  result:
+    image: alok123.azurecr.io/resultapp:latest
+    ports:
+      - "8081:80"
+    networks:
+      - front-tier
+      - back-tier
+
+  worker:
+    image: alok123.azurecr.io/workerrepo:latest
+    networks:
+      - back-tier
+
+  redis:
+    image: redis:alpine
+    networks:
+      - back-tier
+
+  db:
+    image: postgres:15-alpine
+    environment:
+      POSTGRES_USER: "postgres"
+      POSTGRES_PASSWORD: "postgres"
+    volumes:
+      - "db-data:/var/lib/postgresql/data"
+    networks:
+      - back-tier
+
+volumes:
+  db-data:
+
+networks:
+  front-tier:
+  back-tier:
