@@ -9,7 +9,7 @@ services:
       - back-tier
 
   result:
-    image: alok123.azurecr.io/resultapp:latest
+    image: alok123.azurecr.io/resultrepo:latest
     ports:
       - "8081:80"
     networks:
