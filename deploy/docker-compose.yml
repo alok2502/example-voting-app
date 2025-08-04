@@ -1,7 +1,7 @@
 version: "3"
 services:
   vote:
-    image: alok123.azurecr.io/voterepo:latest
+    image: alokazure123.azurecr.io/voterepo:latest
     ports:
       - "8080:80"
     networks:
@@ -9,7 +9,7 @@ services:
       - back-tier
 
   result:
-    image: alok123.azurecr.io/resultrepo:latest
+    image: alokazure123.azurecr.io/resultrepo:latest
     ports:
       - "8081:80"
     networks:
@@ -17,7 +17,7 @@ services:
       - back-tier
 
   worker:
-    image: alok123.azurecr.io/workerrepo:latest
+    image: alokazure123.azurecr.io/workerrepo:latest
     networks:
       - back-tier
 
